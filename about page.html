@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Panchasra's Homepage with Hover and Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('image-about/360_F_571834789_ujYbUnH190iUokdDhZq7GXeTBRgqYVwa.jpg');
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            border-radius: 50%;
+            width: 150px;
+            transform: scale(1.1);
+            opacity: 1;
+            transition: all 2s ease;
+        }
+
+        nav {
+            background: rgba(241, 241, 241, 0.7);
+            padding: 20px;
+            border-radius: 50px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li {
+            padding: 10px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: #000000;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+            background: #ffffff;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .hovered {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #about {
+            animation-delay: 0.5s;
+        }
+        #detail {
+            animation-delay: 1s;
+        }
+        #contact {
+            animation-delay: 1.5s;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input, form textarea {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+    </style>
+
+    <!-- Include jQuery and jQuery Validation library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.5/jquery.validate.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="LOGO">
+            <img src="image-about/360_F_259782318_WKYGAKK3mMRbNdxvneRocd90FnBXmlN8.jpg" alt="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home page.html">Home</a></li> 
+                <li><a href="about page.html">About Me</a></li>
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="reason page.html">Reason</a></li>
+                <li><a href="contect.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" style="border-radius: 40px; background-color: #ffdf2b; color: #000000;">
+        <u><h2>* About Me :-</h2></u>
+        <p>Hi, I'm Vivek Panchasra and this is my personal homepage where I share my work and ideas.</p>
+    </section>
+
+    <section id="detail" style="border-radius: 40px; background-color: #00ff6a; color: #000000;">
+        <u><h2>* Detail :-</h2></u>
+        <p>NAME :- VIVEK PANCHASRA</p>
+        <p>ENROLL NO :- 23SDSCE01108</p>
+        <p>BRANCH :- COMPUTER ENGINEERING</p>
+        <p>SEM :- 3rd SEMESTER IN DIPLOMA</p>
+    </section>
+
+    <section id="contact" style="border-radius: 40px; background-color: #ff6060; color: #000000;">
+        <u><h2>* Contact Me :-</h2></u>
+        <form id="contactForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                section.classList.add('hovered');
+            });
+
+            section.addEventListener('mouseleave', function() {
+                section.classList.remove('hovered');
+            });
+        });
+
+        // jQuery Validation for contact form
+        $(document).ready(function() {
+            $('#contactForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 3
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    message: {
+                        required: true,
+                        minlength: 10
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Please enter your name",
+                        minlength: "Your name must be at least 3 characters long"
+                    },
+                    email: {
+                        required: "Please enter your email",
+                        email: "Please enter a valid email address"
+                    },
+                    message: {
+                        required: "Please enter a message",
+                        minlength: "Your message must be at least 10 characters long"
+                    }
+                },
+                submitHandler: function(form) {
+                    alert("Form submitted successfully!");
+                    form.reset(); // Clear the form after submission
+                }
+            });
+        });
+    </script>
+</body>
+</html>
