@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Homepage with Hover and Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(image-about/360_F_571834789_ujYbUnH190iUokdDhZq7GXeTBRgqYVwa.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            border-radius: 50%;
+            width: 120px;
+            transform: scale(1.1);
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        nav {
+            background: rgba(241, 241, 241, 0.7);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li {
+            padding: 10px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: #000000;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+            background: #ffffff;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .hovered {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #about {
+            animation-delay: 0.5s;
+        }
+
+        #detail {
+            animation-delay: 1s;
+        }
+
+        #contact {
+            animation-delay: 1.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="LOGO">
+            <img src="image-about/360_F_259782318_WKYGAKK3mMRbNdxvneRocd90FnBXmlN8.jpg" alt="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home page.html">Home</a></li> 
+                <li><a href="about page.html">About Me</a></li>
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="reason page.html">Reason</a></li>
+                <li><a href="contect.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" style="background-color: #ffdf2b; color: #000;">
+        <u><h2>* About Me :-</h2></u>
+        <p>Hi, I'm Panchasra Vivek and this is my personal homepage where I share my work and ideas.</p>
+    </section>
+
+    <!-- Detail Section -->
+    <section id="detail" style="background-color: #00ff6a; color: #000;">
+        <u><h2>* Detail :-</h2></u>
+        <p>NAME :- Panchasra Vivek</p>
+        <p>ENROLL NO :- 23SDSCE01108</p>
+        <p>BRANCH :- COMPUTER ENGINEERING</p>
+        <p>SEM :- 3rd SEMESTER IN DIPLOMA</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #ff6060; color: #000;">
+        <u><h2>* Contact :-</h2></u>
+        <p>EMAIL :- vpacnchasra1@rku.ac.in</p>
+        <p>MOBILE NO :- 9737175978</p>
+    </section>
+
+    <script>
+        // Section hover effect
+        const sections = document.querySelectorAll('section');
+
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                section.classList.add('hovered'); 
+            });
+
+            section.addEventListener('mouseleave', function() {
+                section.classList.remove('hovered');  
+            });
+        });
+    </script>
+
+</body>
+</html>
